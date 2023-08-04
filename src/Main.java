@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -25,6 +27,33 @@ public class Main {
             }
             System.out.println();
         }
+    }
+
+    public static void shuffleCards(){
+        Random random = new Random();
+        ArrayList<String> letters = new ArrayList<String>();
+        letters.add("A");
+        letters.add("B");
+        letters.add("C");
+        letters.add("D");
+        letters.add("E");
+        letters.add("G");
+        letters.add("H");
+        letters.add("A");
+        letters.add("B");
+        letters.add("C");
+        letters.add("D");
+        letters.add("E");
+        letters.add("G");
+        letters.add("H");
+        int index;
+        for(int i =0; i<4; i++){
+            for(int j =0; j<4; j++){
+
+            }
+        }
+
+
     }
 
 }
