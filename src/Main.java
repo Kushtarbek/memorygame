@@ -56,22 +56,22 @@ public class Main {
         }
     }
 
-    public static void checkInput(String[][] cards ){
-        while(true){
-            if(!gameOver){
+    public static void checkInput(String[][] cards ) {
+        while (true) {
+            if (!gameOver) {
                 System.out.println("Row: (1-4)");
                 int row1 = scan.nextInt();
                 System.out.println("Cplumn: (1-4)");
                 int col1 = scan.nextInt();
 
-                if(!board[row1 - 1][col1 - 1].equals(" _ ")){
+                if (!board[row1 - 1][col1 - 1].equals(" _ ")) {
                     System.out.println("Already entered!!");
                     System.out.println();
 
                     printBoard();
                     continue;
-                }else{
-                    board[row1 - 1][col1 - 1] = " " + cards[row1-1][col1-1] + " ";
+                } else {
+                    board[row1 - 1][col1 - 1] = " " + cards[row1 - 1][col1 - 1] + " ";
                     printBoard();
                 }
 
@@ -80,15 +80,42 @@ public class Main {
                 System.out.println("Cplumn: (1-4)");
                 int col2 = scan.nextInt();
 
-                if(!board[row2 - 1][col2 - 1].equals(" _ ")){
+                if (!board[row2 - 1][col2 - 1].equals(" _ ")) {
                     System.out.println("Already entered!!");
                     System.out.println();
 
                     printBoard();
                     continue;
+                } else {
+                    board[row2 - 1][col2 - 1] = " " + cards[row2 - 1][col2 - 1] + " ";
+                    if (board[row1 - 1][col1 - 1].equals(board[row2 - 1][col2 - 1])) {
+                        printBoard();
+                        System.out.println("Correct!");
+                    } else {
+                        printBoard();
+                        System.out.println("False!");
+                        board[row1 - 1][col1 - 1].equals(" _ ");
+                        board[row2 - 1][col2 - 1].equals(" _ ");
+                        printBoard();
+
+                    }
+                }
+            } else {
+                System.out.println("Game over!!!");
+                break;
             }
         }
     }
 
+        public static boolean gameOver() {
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if(board[i][j].equals(" _ ")){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+    }
 
-}
