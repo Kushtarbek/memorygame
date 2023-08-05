@@ -49,7 +49,9 @@ public class Main {
         int index;
         for(int i =0; i<4; i++){
             for(int j =0; j<4; j++){
-
+                index = random.nextInt(letters.size());
+                cards[i][j] = letters.get(index);
+                letters.remove(index);
             }
         }
 
