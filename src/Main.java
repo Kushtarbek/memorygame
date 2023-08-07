@@ -4,18 +4,10 @@ import java.util.Scanner;
 
 public class Main {
 
-//    public static char [][] createBoard(){
-//        char [][] board = new char[4][4];
-//        for( int i=0; i<4; i++){
-//            for( int j=0; j<4; j++){
-//                board[i][j] = '-'
-//            }
-//        }
-//        return board;
-//    }
+
     public static String [][] board = new String[4][4];
     public static String [][] cards = new String[4][4];
-    public static Scanner scan = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
 
     public static void printBoard(){
 
@@ -31,7 +23,7 @@ public class Main {
 
     public static void shuffleCards(){
         Random random = new Random();
-        ArrayList<String> letters = new ArrayList<String>();
+        ArrayList<String> letters = new ArrayList<>();
         letters.add("A");
         letters.add("B");
         letters.add("C");
@@ -56,13 +48,13 @@ public class Main {
         }
     }
 
-    public static void checkInput(String[][] cards ) {
+    public static void checkInput(String[][] cards) {
         while (true) {
-            if (!gameOver) {
+            if (!gameOver()) {
                 System.out.println("Row: (1-4)");
-                int row1 = scan.nextInt();
-                System.out.println("Cplumn: (1-4)");
-                int col1 = scan.nextInt();
+                int row1 = scanner.nextInt();
+                System.out.println("Column: (1-4)");
+                int col1 = scanner.nextInt();
 
                 if (!board[row1 - 1][col1 - 1].equals(" _ ")) {
                     System.out.println("Already entered!!");
@@ -76,16 +68,16 @@ public class Main {
                 }
 
                 System.out.println("Row: (1-4)");
-                int row2 = scan.nextInt();
-                System.out.println("Cplumn: (1-4)");
-                int col2 = scan.nextInt();
+                int row2 = scanner.nextInt();
+                System.out.println("Column: (1-4)");
+                int col2 = scanner.nextInt();
 
                 if (!board[row2 - 1][col2 - 1].equals(" _ ")) {
                     System.out.println("Already entered!!");
+                    board[row1-1][col2-1] = " _ ";
                     System.out.println();
 
                     printBoard();
-                    continue;
                 } else {
                     board[row2 - 1][col2 - 1] = " " + cards[row2 - 1][col2 - 1] + " ";
                     if (board[row1 - 1][col1 - 1].equals(board[row2 - 1][col2 - 1])) {
@@ -94,8 +86,8 @@ public class Main {
                     } else {
                         printBoard();
                         System.out.println("False!");
-                        board[row1 - 1][col1 - 1].equals(" _ ");
-                        board[row2 - 1][col2 - 1].equals(" _ ");
+                        board[row1 - 1][col1 - 1] = (" _ ");
+                        board[row2 - 1][col2 - 1] = (" _ ");
                         printBoard();
 
                     }
@@ -116,6 +108,29 @@ public class Main {
                 }
             }
             return true;
+        }
+
+        public static void main(String[] args) {
+            while (true) {
+                System.out.println("Press n for a new game, q to quit");
+                String nq = scanner.nextLine();
+                if(nq.equals("q")){
+                    System.out.println("Exiting...");
+                    break;
+                }else if( nq.equals("n")){
+                    shuffleCards();
+                    for(int i=0; i<4; i++ ){
+                        for (int j=0; j<4; j++) {
+                            board[i][j] = " _ ";
+                        }
+                    }
+                    printBoard();
+                    checkInput(cards);
+                    break;
+                }else{
+                    System.out.println("Invalid Character");
+                }
+            }
         }
     }
 
