@@ -43,10 +43,10 @@ public class MemoryGameController {
         System.out.println("Select the second index (row column) separated by space: ");
         int secondRow = scanner.nextInt();
         int secondColumn = scanner.nextInt();
-
-        if(isValidIndex(matrix, firstRow, firstColumn) && isValidIndex(matrix, secondRow, secondColumn)) {
-
-        }
+//
+//        if(isValidIndex(matrix, firstRow, firstColumn) && isValidIndex(matrix, secondRow, secondColumn)) {
+//       // matrix[firstRow][firstColumn] =
+//        }
     }
 
 
