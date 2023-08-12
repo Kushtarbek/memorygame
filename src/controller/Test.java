@@ -46,7 +46,44 @@ public class Test {
         System.out.print("Enter second column index (0-3, different from the first): ");
         int colIndex2 = scanner.nextInt();
 
+        if (isValidIndex(rowIndex1, colIndex1, rowIndex2, colIndex2)) {
+            revealRandomLetters(matrix, rowIndex1, colIndex1);
+            revealRandomLetters(matrix, rowIndex2, colIndex2);
 
+            printMatrix(matrix);
+
+            System.out.println("Matrix is now hidden.");
+
+            System.out.println("Replicate the letters' index locations.");
+            System.out.print("Enter first row index: ");
+            int guessRowIndex1 = scanner.nextInt();
+            System.out.print("Enter first column index: ");
+            int guessColIndex1 = scanner.nextInt();
+
+            System.out.print("Enter second row index: ");
+            int guessRowIndex2 = scanner.nextInt();
+            System.out.print("Enter second column index: ");
+            int guessColIndex2 = scanner.nextInt();
+
+            if (guessRowIndex1 == rowIndex1 && guessColIndex1 == colIndex1 &&
+                    guessRowIndex2 == rowIndex2 && guessColIndex2 == colIndex2) {
+                System.out.println("Congratulations! Your guess is correct.");
+            } else {
+                System.out.println("Sorry, your guess is incorrect.");
+            }
+        } else {
+            System.out.println("Invalid indexes.");
+        }
+        scanner.close();
+
+
+    }
+
+    public static boolean isValidIndex(int row1, int col1, int row2, int col2) {
+        return row1 >= 0 && row1 < 4 && col1 >= 0 && col1 < 4 &&
+                row2 >= 0 && row2 < 4 && col2 >= 0 && col2 < 4 &&
+                (row1 != row2 || col1 != col2);
+    }
 
 
     public static void revealRandomLetters(char[][] matrix, int row, int col) {
